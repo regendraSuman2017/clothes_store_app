@@ -13,7 +13,7 @@ class ProductPage extends GetView<ProductController> {
     return Scaffold(
       appBar: AppBar(title: Text('product Page')),
       body: Container(
-        child: Obx(()=>Container(child: Text(""),)),
+        child:Container(child: Text(""),),
       ),
       floatingActionButton: FloatingActionButton(onPressed: (){
         showModalBottomSheet(context: context,
@@ -28,14 +28,27 @@ class ProductPage extends GetView<ProductController> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Add Category",style: TextStyle(
+                    Text("Add Product",style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold
                     ),),
                     SizedBox(height: 8,),
                     imageProfile(context),
-                    Form(child: CustomTextField(hintText: 'Product Name',controller:
-                    controller.productController,)),
+                   Obx(()=> Form(child: Column(
+                      children: [
+                        CustomTextField(hintText: 'Category Name',controller: controller.categoryController,),
+                        controller.loader.value==true? Center(child: CircularProgressIndicator(),) :  Container(
+                          height: 200,
+                          child: ListView.builder(itemCount: controller.categoryModel.data!.length,  itemBuilder: (BuildContext context, int index){
+                            return Text(controller.categoryModel.data![index].categoryName);
+                          }),
+                        ),
+                        SizedBox(height: 8,),
+                        CustomTextField(hintText: 'Product Name',controller:
+                        controller.productController,),
+                      ],
+                    )),
+                   ),
                     SizedBox(height: 8,),
                     RoundedButton(text: 'Save', onPressed: (){
                       controller.addProduct();
@@ -108,7 +121,6 @@ class ProductPage extends GetView<ProductController> {
               onPressed: () {
                 controller.takePhoto(ImageSource.camera);
               },
-
             ),
 
             IconButton(
