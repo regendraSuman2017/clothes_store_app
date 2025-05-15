@@ -2,12 +2,14 @@ import 'dart:convert';
 import 'dart:developer';
 import 'package:clothers_store_app/app/data/services/api_response.dart';
 import 'package:clothers_store_app/app/data/services/api_services/api_services.i.dart';
+import 'package:clothers_store_app/app/utils/helpers.dart';
 import 'package:http/http.dart' as http;
 
 class ApiService implements IApiService {
   final String baseUrl;
 
   ApiService({required this.baseUrl});
+
 
   @override
   Future<ApiResponse<dynamic>> post({
@@ -47,16 +49,22 @@ class ApiService implements IApiService {
     }
   }
 
-
-
   Future<ApiResponse<dynamic>> get({
     required String endpoint,
   }) async {
     final url = Uri.parse('$baseUrl/$endpoint');
     try {
-      final response = await http.get(url);
+
+      // Get token from SharedPreferences
+      final token = await TokenHelper.getToken();
+      log("Status Code: ${token}");
+      final response = await http.get(url,headers: {
+        'Authorization': 'Bearer $token',
+        'Content-Type': 'application/json', // Optional but good practice
+      },);
+      log("Status Code: ${response.statusCode}");
+      log("Response Body: ${response.body}");
       if (response.statusCode == 200 || response.statusCode == 201) {
-        // final data = jsonDecode(response.body);
         return ApiResponse.success(response.body, response.statusCode);
       } else {
         return ApiResponse.failure(
@@ -78,6 +86,7 @@ class ApiService implements IApiService {
     final url = Uri.parse('$baseUrl/$endpoint');
 
     try {
+
       // Create a multipart request
       final request = http.MultipartRequest('POST', url);
 
@@ -96,7 +105,6 @@ class ApiService implements IApiService {
       // Send the request
       final streamedResponse = await request.send();
       final response = await http.Response.fromStream(streamedResponse);
-
 
       if (response.statusCode == 200 || response.statusCode == 201) {
         return ApiResponse.success(response.body, response.statusCode);

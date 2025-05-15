@@ -47,12 +47,13 @@ class LoginPage extends GetView<LoginController> {
                 SizedBox(height: 20),
                 Text("Password", style: AppTextStyle.bodyText5SB(),),
                 SizedBox(height: 8),
-                CustomTextField(
+               Obx(()=> CustomTextField(
                   hintText: '********',
-                  obscureText: true
-                  ,controller: controller.passwordController,
-                  suffixIcon: Icon(Icons.visibility_off),
+                  obscureText: controller.obscureIcon.value,
+                  controller: controller.passwordController,
+                  suffixIcon: InkWell( onTap: (){controller.obscureIcon.toggle();},  child: Icon(Icons.visibility_off)),
                 ),
+               ),
                 SizedBox(height: 6),
                 Align(
                   alignment: Alignment.centerRight,

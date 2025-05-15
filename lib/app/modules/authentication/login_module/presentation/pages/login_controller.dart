@@ -17,6 +17,7 @@ class LoginController extends GetxController{
     loginRepo = Get.put(LoginRepoImpl());
   }
 
+  RxBool obscureIcon = false.obs;
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
@@ -28,9 +29,7 @@ class LoginController extends GetxController{
         ApiConstant.password: passwordController.text
       };
       final response = await loginRepo.loginAPI(loginMap);
-      print("dadasdsd ${response.isSuccess}");
       if(response.isSuccess){
-        print("dadasdsd ${response}");
         LoginModel result = LoginModel.fromJson(jsonDecode(response.data.toString()));
 
         await setPrefsLoginValue(result);

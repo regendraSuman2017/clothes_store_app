@@ -37,9 +37,7 @@ RxString currentLocation = ''.obs;
     super.dispose();
   }
 
-  // Start the timer and update the time every second
-  // Start the timer and update the time every second
-  // Start the timer and update the time every second
+
   void _startTimer() {
     _timer = Timer.periodic(Duration(seconds: 1), (Timer timer) {
       if (totalSeconds > 0) {

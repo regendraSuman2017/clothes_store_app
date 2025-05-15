@@ -16,7 +16,6 @@ class LocationAccessController extends GetxController{
         desiredAccuracy: LocationAccuracy.high,
       );
 
-      print('Latitude: ${position.latitude}, Longitude: ${position.longitude}');
       List<Placemark> placemarks = await placemarkFromCoordinates(position.latitude, position.longitude);
       // If placemarks are found, print the address
       if (placemarks.isNotEmpty) {

@@ -13,4 +13,5 @@ static const String productDetails = '/product_detail_page.dart';
   static const profilePage = '/profile_page.dart'; // profile page
   static const categoryList = '/category_list_page.dart'; // category_list page
   static const SETTING = '/setting'; // setting page
+  static const productList = '/product_page.dart'; // product page
 }

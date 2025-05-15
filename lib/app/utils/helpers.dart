@@ -7,9 +7,19 @@ setPrefsLoginValue(LoginModel loginResponse) async {
     prefs.setBool('isLoggedIn', true);
     prefs.setString('name', loginResponse.data.name);
     prefs.setString('email', loginResponse.data.email);
-    prefs.setString('token', loginResponse.data.token);
+    prefs.setString('authToken', loginResponse.data.token);
     prefs.setString('id', loginResponse.data.id.toString());
     prefs.setString('userRole', loginResponse.data.userRole.toString());
 }
 
+
+
 RxInt initialIndex = 0.obs;
+
+
+class TokenHelper {
+    static Future<String?> getToken() async {
+        final prefs = await SharedPreferences.getInstance();
+        return prefs.getString('authToken');
+    }
+}

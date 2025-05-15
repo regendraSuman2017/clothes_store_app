@@ -1,61 +1,52 @@
 import 'dart:io';
-import 'package:image_picker/image_picker.dart';
+
 import 'package:clothers_store_app/app/core_widget/button_widget.dart';
 import 'package:clothers_store_app/app/core_widget/custome_text_form_fiels.dart';
+import 'package:clothers_store_app/app/modules/admin/product_module/product_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:clothers_store_app/app/modules/admin/category_list_module/category_list_controller.dart';
+import 'package:image_picker/image_picker.dart';
 
-class CategoryListPage extends GetView<CategoryListController> {
+class ProductPage extends GetView<ProductController> {
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
-      appBar: AppBar(title: Text('category_list Page')),
-
-      body: Obx(()=> controller.loader.value? Center(child: CircularProgressIndicator(),):SizedBox(
-        height: Get.height,
-        child: ListView.builder(  itemCount: controller.categoryModel.data!.length, itemBuilder: (BuildContext context, int index){
-          return ListTile(
-            leading: Icon(Icons.account_circle_outlined),
-            title: Text("${controller.categoryModel.data![index].categoryName}"),
-          );
-        }),
-      )),
-
+      appBar: AppBar(title: Text('product Page')),
+      body: Container(
+        child: Obx(()=>Container(child: Text(""),)),
+      ),
       floatingActionButton: FloatingActionButton(onPressed: (){
         showModalBottomSheet(context: context,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10)
+                borderRadius: BorderRadius.circular(10)
             ),
             builder: (context){
-          return Container(
-            padding: EdgeInsets.symmetric(horizontal: 10,vertical: 8),
-            height: Get.height*0.35,
-            width: Get.width,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text("Add Category",style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold
-                ),),
-                SizedBox(height: 8,),
-                imageProfile(context),
-                Form(child: CustomTextField(hintText: 'Category Name',controller:
-                  controller.categoryController,)),
-                SizedBox(height: 8,),
-                RoundedButton(text: 'Save', onPressed: (){
-                  controller.addCategory();
-                })
-              ],
-            ),
-          );
+              return Container(
+                padding: EdgeInsets.symmetric(horizontal: 10,vertical: 8),
+                height: Get.height*0.35,
+                width: Get.width,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text("Add Category",style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold
+                    ),),
+                    SizedBox(height: 8,),
+                    imageProfile(context),
+                    Form(child: CustomTextField(hintText: 'Product Name',controller:
+                    controller.productController,)),
+                    SizedBox(height: 8,),
+                    RoundedButton(text: 'Save', onPressed: (){
+                      controller.addProduct();
+                    })
+                  ],
+                ),
+              );
             });
       },),
     );
   }
-
 
   Widget imageProfile(context) {
     return Center(
@@ -86,7 +77,6 @@ class CategoryListPage extends GetView<CategoryListController> {
       ]),
     );
   }
-
 
   Widget bottomSheet(context) {
     return Container(
@@ -139,6 +129,5 @@ class CategoryListPage extends GetView<CategoryListController> {
       ),
     );
   }
-
 
 }

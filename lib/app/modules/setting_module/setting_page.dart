@@ -19,7 +19,12 @@ class SettingPage extends GetView<SettingController> {
               onTap: (){
                 Get.toNamed(Routes.categoryList);
               },
-            )
+            ),   ListTile(
+              title: Text('Product'),
+              onTap: (){
+                Get.toNamed(Routes.productList);
+              },
+            ),
           ],
         ),
       ),

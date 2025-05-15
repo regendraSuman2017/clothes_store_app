@@ -43,7 +43,6 @@ class CartItem {
   Future<int> saveToDB() async {
     DBHelper dbHelper = DBHelper();
     var dbClient = await dbHelper.database;
-    print("Saving to DB: ${toMap()}"); // <-- call the method with ()
     return await dbClient.insert('cart_items', toMap());
   }
 

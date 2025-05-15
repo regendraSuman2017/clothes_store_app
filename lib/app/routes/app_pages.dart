@@ -1,3 +1,5 @@
+import 'package:clothers_store_app/app/modules/admin/product_module/product_bindings.dart';
+import 'package:clothers_store_app/app/modules/admin/product_module/product_page.dart';
 import '../../app/modules/setting_module/setting_page.dart';
 import '../../app/modules/setting_module/setting_bindings.dart';
 import 'package:clothers_store_app/app/modules/admin/category_list_module/category_list_bindings.dart';
@@ -94,6 +96,11 @@ List<GetPage> getPages = [
       name: Routes.SETTING,
       page: () => SettingPage(),
       binding: SettingBinding(),
+    ),
+    GetPage(
+      name: Routes.productList,
+      page: () => ProductPage(),
+      binding: ProductBinding(),
     ),
   ];
 

@@ -9,14 +9,14 @@ CategoryModel categoryModelFromJson(String str) => CategoryModel.fromJson(json.d
 String categoryModelToJson(CategoryModel data) => json.encode(data.toJson());
 
 class CategoryModel {
-  bool success;
-  String message;
-  List<Datum> data;
+  bool? success;
+  String? message;
+  List<Datum>? data;
 
   CategoryModel({
-    required this.success,
-    required this.message,
-    required this.data,
+     this.success,
+     this.message,
+     this.data,
   });
 
   factory CategoryModel.fromJson(Map<String, dynamic> json) => CategoryModel(
@@ -28,7 +28,7 @@ class CategoryModel {
   Map<String, dynamic> toJson() => {
     "success": success,
     "message": message,
-    "data": List<dynamic>.from(data.map((x) => x.toJson())),
+    "data": List<dynamic>.from(data!.map((x) => x.toJson())),
   };
 }
 
