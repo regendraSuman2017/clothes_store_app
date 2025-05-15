@@ -15,11 +15,11 @@ class SignUpPage extends GetView<SignUpController> {
       backgroundColor: Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 4),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 30),
+              const SizedBox(height: 20),
               Center(
                 child: Text('Create Account', style: AppTextStyle.extraHeading5B()),
               ),
@@ -31,22 +31,22 @@ class SignUpPage extends GetView<SignUpController> {
                   textAlign: TextAlign.center,
                 ),
               ),
-              const SizedBox(height: 32),
+              const SizedBox(height: 25),
 
               _buildLabel("Store Name"),
               const SizedBox(height: 8),
               CustomTextField(hintText: 'Enter store name',controller: controller.storeNameController,),
-              const SizedBox(height: 16),
+              const SizedBox(height: 10),
 
               _buildLabel("Name"),
               const SizedBox(height: 8),
               CustomTextField(hintText: 'Enter name',controller: controller.nameController,),
-              const SizedBox(height: 16),
+              const SizedBox(height: 10),
 
               _buildLabel("Email"),
               const SizedBox(height: 8),
               CustomTextField(hintText: 'example@gmail.com',controller: controller.emailController),
-              const SizedBox(height: 16),
+              const SizedBox(height: 10),
 
               _buildLabel("Password"),
               const SizedBox(height: 8),
@@ -60,18 +60,18 @@ class SignUpPage extends GetView<SignUpController> {
 
               _buildTermsCheckbox(),
 
-              const SizedBox(height: 20),
+              const SizedBox(height: 10),
               RoundedButton(text: 'Sign Up', onPressed: () {
                 controller.signUpApi();
               }),
 
-              const SizedBox(height: 24),
+              const SizedBox(height: 15),
               _buildDivider(),
 
-              const SizedBox(height: 20),
+              const SizedBox(height: 10),
               _buildSocialIcons(),
 
-              const SizedBox(height: 30),
+              const SizedBox(height: 20),
               _buildAlreadyHaveAccount(),
             ],
           ),

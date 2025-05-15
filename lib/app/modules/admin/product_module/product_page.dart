@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:clothers_store_app/app/core_widget/button_widget.dart';
 import 'package:clothers_store_app/app/core_widget/custome_text_form_fiels.dart';
 import 'package:clothers_store_app/app/modules/admin/product_module/product_controller.dart';
+import 'package:clothers_store_app/app/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -37,9 +38,15 @@ class ProductPage extends GetView<ProductController> {
                    Obx(()=> Form(child: Column(
                       children: [
                         CustomTextField(hintText: 'Category Name',controller: controller.categoryController,),
-                        controller.loader.value==true? Center(child: CircularProgressIndicator(),) :  Container(
+                        controller.loader.value==true? Center(child: CircularProgressIndicator(),)
+                            :  Container(
                           height: 200,
-                          child: ListView.builder(itemCount: controller.categoryModel.data!.length,  itemBuilder: (BuildContext context, int index){
+                          decoration: BoxDecoration(
+                            color: primaryUltraLight
+                          ),
+ padding: EdgeInsets.all(8),
+                          child: ListView.builder(itemCount: controller.categoryModel.data!.length,
+                              itemBuilder: (BuildContext context, int index){
                             return Text(controller.categoryModel.data![index].categoryName);
                           }),
                         ),

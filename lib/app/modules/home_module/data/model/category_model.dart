@@ -4,42 +4,62 @@
 
 import 'dart:convert';
 
-List<CategoryModel> categoryModelFromJson(String str) => List<CategoryModel>.from(json.decode(str).map((x) => CategoryModel.fromJson(x)));
+CategoryModel categoryModelFromJson(String str) => CategoryModel.fromJson(json.decode(str));
 
-String categoryModelToJson(List<CategoryModel> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+String categoryModelToJson(CategoryModel data) => json.encode(data.toJson());
 
 class CategoryModel {
-  int id;
-  String name;
-  String slug;
-  String image;
-  DateTime creationAt;
-  DateTime updatedAt;
+  bool? success;
+  int? statusCode;
+  String? message;
+  List<Datum>? data;
 
   CategoryModel({
-    required this.id,
-    required this.name,
-    required this.slug,
-    required this.image,
-    required this.creationAt,
-    required this.updatedAt,
+     this.success,
+     this.statusCode,
+     this.message,
+     this.data,
   });
 
   factory CategoryModel.fromJson(Map<String, dynamic> json) => CategoryModel(
-    id: json["id"],
-    name: json["name"],
-    slug: json["slug"],
-    image: json["image"],
-    creationAt: DateTime.parse(json["creationAt"]),
-    updatedAt: DateTime.parse(json["updatedAt"]),
+    success: json["success"] as bool?,
+    statusCode: json["statusCode"] as int?,
+    message: json["message"] as String?,
+    data: json["data"] != null
+        ? List<Datum>.from((json["data"] as List).map((x) => Datum.fromJson(x as Map<String, dynamic>)))
+        : null,
+  );
+
+  Map<String, dynamic> toJson() => {
+    "success": success,
+    "statusCode": statusCode,
+    "message": message,
+    "data": List<dynamic>.from(data!.map((x) => x.toJson())),
+  };
+}
+
+class Datum {
+  final int id;
+  final String categoryName;
+  final String image;
+
+  Datum({
+    required this.id,
+    required this.categoryName,
+    required this.image,
+  });
+
+  factory Datum.fromJson(Map<String, dynamic> json) => Datum(
+    id: json["id"] as int? ?? 0,
+    categoryName: json["categoryName"] as String? ?? 'Unknown',
+    image: json["image"] as String? ?? '',
   );
 
   Map<String, dynamic> toJson() => {
     "id": id,
-    "name": name,
-    "slug": slug,
+    "categoryName": categoryName,
     "image": image,
-    "creationAt": creationAt.toIso8601String(),
-    "updatedAt": updatedAt.toIso8601String(),
   };
 }
+
+

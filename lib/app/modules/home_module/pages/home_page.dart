@@ -71,31 +71,50 @@ class HomePage extends GetView<HomeController> {
                 const SizedBox(height: 12),
 
                 // Category Icons
-            SizedBox(
-              height: 80,
-              child: FutureBuilder<List<CategoryModel>>(
-                future: controller.getAllCategory(),
-                builder: (context, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Center(child: CircularProgressIndicator());
-                  } else if (snapshot.hasError) {
-                    return Center(child: Text('Error: ${snapshot.error}'));
-                  } else if (snapshot.hasData) {
-                    final productModel = snapshot.data!;
-                    return ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: productModel.length,
-                      itemBuilder: (context, index) {
-                        final product = productModel[index];
-                        return CategoryIcon( label: product.name, icon: product.image, );
-                      },
-                    );
-                  } else {
-                    return Center(child: Text('No data found.'));
-                  }
-                },
-              ),
-            ),
+                SizedBox(
+                  height: 100,
+                  child: FutureBuilder<List<Datum>>(
+                    future: controller.getAllCategory(),
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return const Center(child: CircularProgressIndicator());
+                      }
+
+                      if (snapshot.hasError) {
+                        return Center(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              const Icon(Icons.error_outline, color: Colors.red),
+                              const SizedBox(height: 8),
+                              Text('Error: ${snapshot.error}',
+                                  style: const TextStyle(color: Colors.red)),
+                            ],
+                          ),
+                        );
+                      }
+
+                      final categories = snapshot.data ?? [];
+
+                      if (categories.isEmpty) {
+                        return const Center(
+                          child: Text('No categories available',
+                              style: TextStyle(color: Colors.grey)),
+                        );
+                      }
+
+                      return ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: categories.length,
+                        itemBuilder: (context, index) {
+                          final category = categories[index];
+                          return CategoryIcon( label: category.categoryName, icon: category.image, );
+                        },
+                      );
+                    },
+                  ),
+                ),
+
 
                 const SizedBox(height: 10),
 
@@ -119,7 +138,7 @@ class HomePage extends GetView<HomeController> {
                 ),
                 const SizedBox(height: 16),
                 // Products Grid
-                SizedBox(
+             /*   SizedBox(
                   height:Get.height*0.3,
                   child: FutureBuilder<List<ProductModel>>(
                     future: controller.getProducts(),
@@ -148,7 +167,7 @@ class HomePage extends GetView<HomeController> {
                       }
                     },
                   ),
-                ),
+                ),*/
 
               ],
             ),

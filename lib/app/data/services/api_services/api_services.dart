@@ -57,7 +57,6 @@ class ApiService implements IApiService {
 
       // Get token from SharedPreferences
       final token = await TokenHelper.getToken();
-      log("Status Code: ${token}");
       final response = await http.get(url,headers: {
         'Authorization': 'Bearer $token',
         'Content-Type': 'application/json', // Optional but good practice
@@ -65,6 +64,7 @@ class ApiService implements IApiService {
       log("Status Code: ${response.statusCode}");
       log("Response Body: ${response.body}");
       if (response.statusCode == 200 || response.statusCode == 201) {
+        print("Every thuink is find ${response.body}");
         return ApiResponse.success(response.body, response.statusCode);
       } else {
         return ApiResponse.failure(
