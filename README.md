@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Clothing Store App</title>
 </head>
 <body style="font-family: 'Segoe UI', sans-serif; background-color: #fdfdfd; color: #333; padding: 20px; line-height: 1.6;">
 
