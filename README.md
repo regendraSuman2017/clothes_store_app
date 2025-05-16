@@ -6,7 +6,7 @@
 </head>
 <body style="font-family: 'Segoe UI', sans-serif; background-color: #fdfdfd; color: #333; padding: 20px; line-height: 1.6;">
 
-  <h1 style="color: #1a1a1a;">👕 Clothing Store App (Flutter + MVC + GetX + Firebase)</h1>
+  <h1 style="color: #1a1a1a;">👕 Clothing Store App (Flutter + MVC + GetX + Firebase + Node JS)</h1>
 
   <div style="background-color: #eef2ff; padding: 10px; border-left: 5px solid #6366f1; margin: 20px 0;">
     A simple, clean Flutter app following the <strong>MVC architecture</strong> using <strong>GetX</strong> <strong>Firebase</strong>.<br/>
