@@ -9,7 +9,7 @@
   <h1 style="color: #1a1a1a;">👕 Clothing Store App (Flutter + MVVM + GetX)</h1>
 
   <div style="background-color: #eef2ff; padding: 10px; border-left: 5px solid #6366f1; margin: 20px 0;">
-    A simple, clean Flutter app following the <strong>MVVM architecture</strong> using <strong>GetX</strong>.<br/>
+    A simple, clean Flutter app following the <strong>MVC architecture</strong> using <strong>GetX</strong> <strong>Firebase</strong>.<br/>
     This app demonstrates how to manage state, organize code, and build scalable mobile apps.<br/>
     It features a basic clothing store with a product list.
   </div>
