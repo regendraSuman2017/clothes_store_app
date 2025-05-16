@@ -68,14 +68,14 @@
   <div class="section">
     <h2>🖼️ Screenshots</h2>
     <div class="screenshots">
-      <img src="screenshots/CSA_1.jpg" alt="screenshot 1">
-      <img src="screenshots/CSA_2.jpg" alt="screenshot 2">
-      <img src="screenshots/CSA_3.1.jpg" alt="screenshot 3.1">
-      <img src="screenshots/CSA_3.2.jpg" alt="screenshot 3.2">
-      <img src="screenshots/CSA_3.3.jpg" alt="screenshot 3.3">
-      <img src="screenshots/CSA_4.jpg" alt="screenshot 4">
-      <img src="screenshots/CSA_5.jpg" alt="screenshot 5">
-      <img src="screenshots/CSA_6.jpg" alt="screenshot 6">
+      <img src="screenshots/CSA_1.jpg" alt="screenshot 1" height="90">
+      <img src="screenshots/CSA_2.jpg" alt="screenshot 2" height="90">
+      <img src="screenshots/CSA_3.1.jpg" alt="screenshot 3.1" height="90">
+      <img src="screenshots/CSA_3.2.jpg" alt="screenshot 3.2" height="90">
+      <img src="screenshots/CSA_3.3.jpg" alt="screenshot 3.3" height="90">
+      <img src="screenshots/CSA_4.jpg" alt="screenshot 4" height="90">
+      <img src="screenshots/CSA_5.jpg" alt="screenshot 5" height="90">
+      <img src="screenshots/CSA_6.jpg" alt="screenshot 6" height="90">
     </div>
   </div>
 
