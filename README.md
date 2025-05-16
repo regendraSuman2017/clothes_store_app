@@ -31,7 +31,7 @@
   <div style="margin-top: 40px;">
     <h2 style="color: #1a1a1a;">✨ Features</h2>
     <ul style="list-style-type: '✨ '; padding-left: 20px;">
-      <li>🔄 MVVM architecture</li>
+      <li>🔄 MVC architecture</li>
       <li>📦 GetX for state management and dependency injection</li>
       <li>🧩 Modular folder structure</li>
       <li>🧪 Easy to scale and test</li>
