@@ -3,86 +3,35 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Clothing Store App</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #fdfdfd;
-      color: #333;
-      padding: 20px;
-      line-height: 1.6;
-    }
-
-    h1, h2 {
-      color: #1a1a1a;
-    }
-
-    .section {
-      margin-top: 40px;
-    }
-
-    .highlight {
-      background-color: #eef2ff;
-      padding: 10px;
-      border-left: 5px solid #6366f1;
-      margin: 20px 0;
-    }
-
-    ul {
-      list-style-type: "✨ ";
-      padding-left: 20px;
-    }
-
-    .folder {
-      font-family: monospace;
-      background-color: #f0f0f0;
-      padding: 10px;
-      border-radius: 6px;
-      margin-top: 10px;
-    }
-
-    .screenshots {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 20px;
-    }
-
-    .screenshots img {
-      width: 100px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-    }
-  </style>
 </head>
-<body>
+<body style="font-family: 'Segoe UI', sans-serif; background-color: #fdfdfd; color: #333; padding: 20px; line-height: 1.6;">
 
-  <h1>👕 Clothing Store App (Flutter + MVVM + GetX)</h1>
+  <h1 style="color: #1a1a1a;">👕 Clothing Store App (Flutter + MVC + GetX + Firebase + Node JS)</h1>
 
-  <div class="highlight">
-    A simple, clean Flutter app following the <strong>MVVM architecture</strong> using <strong>GetX</strong>.  
-    This app demonstrates how to manage state, organize code, and build scalable mobile apps.
+  <div style="background-color: #eef2ff; padding: 10px; border-left: 5px solid #6366f1; margin: 20px 0;">
+    A simple, clean Flutter app following the <strong>MVC architecture</strong> using <strong>GetX</strong> <strong>Firebase</strong>.<br/>
+    This app demonstrates how to manage state, organize code, and build scalable mobile apps.<br/>
     It features a basic clothing store with a product list.
   </div>
 
-  <div class="section">
-    <h2>🖼️ Screenshots</h2>
-    <div class="screenshots">
-      <img src="screenshots/CSA_1.jpg" alt="screenshot 1" height="90">
-      <img src="screenshots/CSA_2.jpg" alt="screenshot 2" height="90">
-      <img src="screenshots/CSA_3.1.jpg" alt="screenshot 3.1" height="90">
-      <img src="screenshots/CSA_3.2.jpg" alt="screenshot 3.2" height="90">
-      <img src="screenshots/CSA_3.3.jpg" alt="screenshot 3.3" height="90">
-      <img src="screenshots/CSA_4.jpg" alt="screenshot 4" height="90">
-      <img src="screenshots/CSA_5.jpg" alt="screenshot 5" height="90">
-      <img src="screenshots/CSA_6.jpg" alt="screenshot 6" height="90">
+  <div style="margin-top: 40px;">
+    <h2 style="color: #1a1a1a;">🖼️ Screenshots</h2>
+    <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px;">
+      <img src="screenshots/CSA_1.jpg" alt="screenshot 1" style="width: 100px; border-radius: 6px; border: 1px solid #ccc;">
+      <img src="screenshots/CSA_2.jpg" alt="screenshot 2" style="width: 100px; border-radius: 6px; border: 1px solid #ccc;">
+      <img src="screenshots/CSA_3.1.jpg" alt="screenshot 3.1" style="width: 100px; border-radius: 6px; border: 1px solid #ccc;">
+      <img src="screenshots/CSA_3.2.jpg" alt="screenshot 3.2" style="width: 100px; border-radius: 6px; border: 1px solid #ccc;">
+      <img src="screenshots/CSA_3.3.jpg" alt="screenshot 3.3" style="width: 100px; border-radius: 6px; border: 1px solid #ccc;">
+      <img src="screenshots/CSA_4.jpg" alt="screenshot 4" style="width: 100px; border-radius: 6px; border: 1px solid #ccc;">
+      <img src="screenshots/CSA_5.jpg" alt="screenshot 5" style="width: 100px; border-radius: 6px; border: 1px solid #ccc;">
+      <img src="screenshots/CSA_6.jpg" alt="screenshot 6" style="width: 100px; border-radius: 6px; border: 1px solid #ccc;">
     </div>
   </div>
 
-  <div class="section">
-    <h2>✨ Features</h2>
-    <ul>
-      <li>🔄 MVVM architecture</li>
+  <div style="margin-top: 40px;">
+    <h2 style="color: #1a1a1a;">✨ Features</h2>
+    <ul style="list-style-type: '✨ '; padding-left: 20px;">
+      <li>🔄 MVC architecture</li>
       <li>📦 GetX for state management and dependency injection</li>
       <li>🧩 Modular folder structure</li>
       <li>🧪 Easy to scale and test</li>
@@ -90,9 +39,9 @@
     </ul>
   </div>
 
-  <div class="section">
-    <h2>🗂️ Folder Structure</h2>
-    <div class="folder">
+  <div style="margin-top: 40px;">
+    <h2 style="color: #1a1a1a;">🗂️ Folder Structure</h2>
+    <div style="font-family: monospace; background-color: #f0f0f0; padding: 10px; border-radius: 6px; margin-top: 10px;">
       # clothes_store_app<br/>
       └── clothes_store_app
     </div>
