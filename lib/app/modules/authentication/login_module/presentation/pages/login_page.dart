@@ -51,7 +51,8 @@ class LoginPage extends GetView<LoginController> {
                   hintText: '********',
                   obscureText: controller.obscureIcon.value,
                   controller: controller.passwordController,
-                  suffixIcon: InkWell( onTap: (){controller.obscureIcon.toggle();},  child: Icon(Icons.visibility_off)),
+                  suffixIcon: InkWell( onTap: (){controller.obscureIcon.toggle();},
+                      child: Icon(controller.obscureIcon.value ?Icons.visibility_off : Icons.visibility)),
                 ),
                ),
                 SizedBox(height: 6),
@@ -66,7 +67,9 @@ class LoginPage extends GetView<LoginController> {
                   ),
                 ),
                 SizedBox(height: 10),
-                RoundedButton(text: 'Sign In', onPressed:(){
+                RoundedButton(text: 'Sign In', onPressed: () async {
+                  // await LocalNotificationService.initialize();
+                  // await LocalNotificationService.scheduleNotification();
                   controller.loginAPI();
                 }),
                 SizedBox(height: 20),

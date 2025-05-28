@@ -1,7 +1,5 @@
 import 'package:clothers_store_app/app/modules/home_module/data/categories_icon.dart';
 import 'package:clothers_store_app/app/modules/home_module/data/model/category_model.dart';
-import 'package:clothers_store_app/app/modules/home_module/data/model/product_model.dart';
-import 'package:clothers_store_app/app/modules/home_module/widget/product_card.dart';
 import 'package:clothers_store_app/app/modules/home_module/widget/promotional_banner.dart';
 import 'package:clothers_store_app/app/theme/app_colors.dart';
 import 'package:clothers_store_app/app/theme/app_text_theme.dart';

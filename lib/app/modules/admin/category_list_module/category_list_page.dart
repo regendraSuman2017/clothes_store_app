@@ -15,7 +15,7 @@ class CategoryListPage extends GetView<CategoryListController> {
 
       body: Obx(()=> controller.loader.value? Center(child: CircularProgressIndicator(),):SizedBox(
         height: Get.height,
-        child: ListView.builder(  itemCount: controller.categoryModel.data!.length, itemBuilder: (BuildContext context, int index){
+        child: ListView.builder( itemCount: controller.categoryModel.data!.length, itemBuilder: (BuildContext context, int index){
           return ListTile(
             leading: Icon(Icons.account_circle_outlined),
             title: Text("${controller.categoryModel.data![index].categoryName}"),

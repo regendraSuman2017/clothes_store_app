@@ -54,9 +54,11 @@ class ApiService implements IApiService {
   }) async {
     final url = Uri.parse('$baseUrl/$endpoint');
     try {
+      log("Status Code: ${url}");
 
       // Get token from SharedPreferences
       final token = await TokenHelper.getToken();
+      log("Status Code: ${token}");
       final response = await http.get(url,headers: {
         'Authorization': 'Bearer $token',
         'Content-Type': 'application/json', // Optional but good practice

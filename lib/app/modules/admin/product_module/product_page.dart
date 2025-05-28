@@ -1,152 +1,77 @@
-import 'dart:io';
-
-import 'package:clothers_store_app/app/core_widget/button_widget.dart';
-import 'package:clothers_store_app/app/core_widget/custome_text_form_fiels.dart';
+import 'package:clothers_store_app/app/modules/admin/product_module/data/model/product_model.dart';
 import 'package:clothers_store_app/app/modules/admin/product_module/product_controller.dart';
-import 'package:clothers_store_app/app/theme/app_colors.dart';
+import 'package:clothers_store_app/app/modules/admin/product_module/widget/add_fav_widget.dart';
+import 'package:clothers_store_app/app/theme/app_text_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:image_picker/image_picker.dart';
 
 class ProductPage extends GetView<ProductController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('product Page')),
-      body: Container(
-        child:Container(child: Text(""),),
-      ),
-      floatingActionButton: FloatingActionButton(onPressed: (){
-        showModalBottomSheet(context: context,
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10)
+      appBar: AppBar(title: const Text('Product Page')),
+      body: Column(
+        children: [
+          const Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Text(
+              "Products",
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
-            builder: (context){
-              return Container(
-                padding: EdgeInsets.symmetric(horizontal: 10,vertical: 8),
-                height: Get.height*0.35,
-                width: Get.width,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("Add Product",style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold
-                    ),),
-                    SizedBox(height: 8,),
-                    imageProfile(context),
-                   Obx(()=> Form(child: Column(
+          ),
+          Expanded(
+            child: FutureBuilder<List<Datums>>(
+              future: controller.getProduct(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Center(child: CircularProgressIndicator());
+                }
+                if (snapshot.hasError) {
+                  return Center(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
                       children: [
-                        CustomTextField(hintText: 'Category Name',controller: controller.categoryController,),
-                        controller.loader.value==true? Center(child: CircularProgressIndicator(),)
-                            :  Container(
-                          height: 200,
-                          decoration: BoxDecoration(
-                            color: primaryUltraLight
-                          ),
- padding: EdgeInsets.all(8),
-                          child: ListView.builder(itemCount: controller.categoryModel.data!.length,
-                              itemBuilder: (BuildContext context, int index){
-                            return Text(controller.categoryModel.data![index].categoryName);
-                          }),
-                        ),
-                        SizedBox(height: 8,),
-                        CustomTextField(hintText: 'Product Name',controller:
-                        controller.productController,),
+                        const Icon(Icons.error_outline, color: Colors.red),
+                        const SizedBox(height: 8),
+                        Text('Error: \${snapshot.error}',
+                            style: const TextStyle(color: Colors.red)),
                       ],
-                    )),
-                   ),
-                    SizedBox(height: 8,),
-                    RoundedButton(text: 'Save', onPressed: (){
-                      controller.addProduct();
-                    })
-                  ],
-                ),
-              );
-            });
-      },),
-    );
-  }
-
-  Widget imageProfile(context) {
-    return Center(
-      child: Stack(children: <Widget>[
-        CircleAvatar(
-          radius: 40.0,
-          backgroundImage: controller.imageFile == null
-              ? AssetImage("")
-              : FileImage(File(controller.imageFile!.path)),
-        ),
-        Positioned(
-          bottom: 8.0,
-          right: 10.0,
-          child: InkWell(
-            onTap: () {
-              showModalBottomSheet(
-                context: context,
-                builder: ((builder) => bottomSheet(context)),
-              );
-            },
-            child: Icon(
-              Icons.camera_alt,
-              color: Colors.teal,
-              size: 15.0,
-            ),
-          ),
-        ),
-      ]),
-    );
-  }
-
-  Widget bottomSheet(context) {
-    return Container(
-      height: 100.0,
-      width: MediaQuery.of(context).size.width,
-      margin: EdgeInsets.symmetric(
-        horizontal: 20,
-        vertical: 20,
-      ),
-      child: Column(
-        children: <Widget>[
-          Text(
-            "Choose Profile photo",
-            style: TextStyle(
-              fontSize: 20.0,
-            ),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
-            IconButton(
-              icon: Column(
-                children: [
-                  Icon(Icons.camera),
-                  Text("Camera"),
-                ],
-              ),
-              onPressed: () {
-                controller.takePhoto(ImageSource.camera);
+                    ),
+                  );
+                }
+                final products = snapshot.data ?? [];
+                if (products.isEmpty) {
+                  return const Center(
+                    child: Text('No products available',
+                        style: TextStyle(color: Colors.grey)),
+                  );
+                }
+                return ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: products.length,
+                  itemBuilder: (context, index) {
+                    final category = products[index];
+                    return SizedBox(
+                      height: 50,
+                      width: Get.width,
+                      child: ListTile(
+                        leading: CircleAvatar(
+                          radius: 25.0,
+                          backgroundImage: NetworkImage(category.image),
+                          backgroundColor: Colors.transparent,
+                        ),
+                        title: Text(category.productName, style: AppTextStyle.heading3SB()),
+                        subtitle: Text("\$${category.price}", style: AppTextStyle.bodyText4M()),
+                      ),
+                    );
+                  },
+                );
               },
             ),
-
-            IconButton(
-              icon: Column(
-                children: [
-                  Icon(Icons.image),
-                  Text("Gallery"),
-                ],
-              ),
-              onPressed: () {
-                controller.takePhoto(ImageSource.gallery);
-              },
-
-            ),
-
-          ])
+          ),
         ],
       ),
+      floatingActionButton: AddProductFAB(),
     );
   }
-
 }

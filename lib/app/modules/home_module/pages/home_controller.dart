@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:clothers_store_app/app/modules/home_module/data/model/category_model.dart';
-import 'package:clothers_store_app/app/modules/home_module/data/model/product_model.dart';
 import 'package:clothers_store_app/app/modules/home_module/data/repositories/home_repo.dart';
 import 'package:clothers_store_app/app/modules/home_module/data/repositories/home_repo.i.dart';
 import 'package:get/get.dart';
@@ -77,8 +76,7 @@ class HomeController extends GetxController {
       if (response.isSuccess == true && response.data != null) {
         Map<String, dynamic> jsonMap;
         try {
-          jsonMap =
-              jsonDecode(response.data.toString()) as Map<String, dynamic>;
+          jsonMap = jsonDecode(response.data.toString()) as Map<String, dynamic>;
           log('🔍 Parsed JSON Map: $jsonMap');
         } catch (e) {
           log('❌ JSON decode error: $e');

@@ -2,6 +2,7 @@ import 'package:clothers_store_app/app/core_widget/button_widget.dart';
 import 'package:clothers_store_app/app/routes/app_routes.dart';
 import 'package:clothers_store_app/app/theme/app_colors.dart';
 import 'package:clothers_store_app/app/theme/app_text_theme.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:clothers_store_app/app/modules/welcome_screen_module/welcome_screen_controller.dart';
@@ -108,6 +109,8 @@ class WelcomeScreenPage extends GetView<WelcomeScreenController> {
                   TextSpan(
                       text: 'Sign in',
                       style: AppTextStyle.bodyText6M(color: primaryColor,underLine: true),
+                    recognizer: TapGestureRecognizer()..onTap = () => Get.toNamed(Routes.loginPage),
+
                   ),
                 ],
               ),
